@@ -1,0 +1,23 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+#text{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    z-index: 99;
+    background-color: rgb(255, 255, 255);
+}
+
+#text input{
+    width: 100%;
+    padding: 5px;
+}
+
+canvas{
+    /* background-color: black; */
+}
