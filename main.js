@@ -137,7 +137,12 @@ class TextParticleAnimation {
         });
 
         this.input.addEventListener("keyup", (e) => {
-            this.wrapText(e.target.value);
+            if(e.target.value.length === 0){
+                this.wrapText("Hello world");
+            }else{
+                this.wrapText(e.target.value);
+            }
+           
         });
 
         this.particleWidthInput.addEventListener("input", (e) => {
@@ -145,7 +150,7 @@ class TextParticleAnimation {
             if (!isNaN(e.target.value)) {
                 this.particleWidth = parseInt(e.target.value);
             }
-            this.wrapText("Hello world");
+            this.wrapText(this.input.value);
         });
 
         this.particleSpacingInput.addEventListener("input", (e) => {
@@ -153,7 +158,7 @@ class TextParticleAnimation {
             if (!isNaN(e.target.value)) {
                 this.particleSpacing = parseInt(e.target.value);
             }
-            this.wrapText("Hello world");
+            this.wrapText(this.input.value);
         });
 
         this.distanceRadiusInput.addEventListener("input", (e) => {
@@ -161,7 +166,7 @@ class TextParticleAnimation {
             if (!isNaN(parseInt(e.target.value))) {
                 this.distanceRadius = parseInt(e.target.value);
             }
-            this.wrapText("Hello world");
+            this.wrapText(this.input.value);
         });
 
         this.frictionInput.addEventListener("input", (e) => {
@@ -169,7 +174,7 @@ class TextParticleAnimation {
             if (!isNaN(e.target.value)) {
                 this.friction = parseFloat(e.target.value);
             }
-            this.wrapText("Hello world");
+            this.wrapText(this.input.value);
         });
 
         this.easeInput.addEventListener("input", (e) => {
@@ -177,10 +182,11 @@ class TextParticleAnimation {
             if (!isNaN(e.target.value)) {
                 this.ease = parseFloat(e.target.value);
             }
-            this.wrapText("Hello world");
+            this.wrapText(this.input.value);
         });
 
         this.wrapText("Hello world");
+
     }
 
     animate() {
