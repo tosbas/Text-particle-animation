@@ -1,11 +1,11 @@
-body{
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     overflow: hidden;
 }
 
-#text{
+#text {
     position: absolute;
     width: 100%;
     bottom: 0;
@@ -13,11 +13,35 @@ body{
     background-color: rgb(255, 255, 255);
 }
 
-#text input{
+#text input {
     width: 100%;
     padding: 5px;
 }
 
-canvas{
+#options {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+}
+
+#options div {
+    margin: 10px;
+}
+
+#options{
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+#options label{
+    display: block;
+}
+
+#options input{
+    width: 100px;
+}
+
+canvas {
     /* background-color: black; */
 }

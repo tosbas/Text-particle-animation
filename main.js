@@ -1,7 +1,12 @@
 class TextParticleAnimation {
-    constructor(canvasId, inputId) {
+    constructor(canvasId, inputId, easeInput, frictionInput, particleSpacingInput, particleWidthInput, distanceRadiusInput) {
         this.canvas = document.getElementById(canvasId);
         this.input = document.getElementById(inputId);
+        this.easeInput = document.getElementById(easeInput);
+        this.frictionInput = document.getElementById(frictionInput);
+        this.particleSpacingInput = document.getElementById(particleSpacingInput);
+        this.particleWidthInput = document.getElementById(particleWidthInput);
+        this.distanceRadiusInput = document.getElementById(distanceRadiusInput);
         this.ctx = this.canvas.getContext("2d", { willReadFrequently: true });
 
         this.canvas.width = window.innerWidth;
@@ -11,11 +16,11 @@ class TextParticleAnimation {
         this.maxTextWidth = this.canvas.width * 0.8;
         this.lineHeight = 80;
         this.particleSpacing = 1;
-        this.rectSize = 1;
+        this.particleWidth = 1;
         this.distanceRadius = 5000;
 
-        this.friction = 0.80;
-        this.ease = 0.01;
+        this.friction = 0.50;
+        this.ease = 0.1;
 
         this.gradient = this.ctx.createLinearGradient(0, 0, this.canvas.width, this.canvas.height);
 
@@ -82,6 +87,11 @@ class TextParticleAnimation {
                 }
             }
         }
+
+        for (const particle of this.particles) {
+            particle.velocity.x += Math.random() * -this.canvas.width * 2 + this.canvas.width;
+            particle.velocity.y += Math.random() * -this.canvas.height * 2 + this.canvas.height;
+        }
     }
 
     updateParticles() {
@@ -109,6 +119,7 @@ class TextParticleAnimation {
                 particle.x += (particle.velocity.x *= this.friction) + (particle.initialX - particle.x) * this.ease;
                 particle.y += (particle.velocity.y *= this.friction) + (particle.initialY - particle.y) * this.ease;
             }
+
         }
     }
 
@@ -128,6 +139,43 @@ class TextParticleAnimation {
         this.input.addEventListener("keyup", (e) => {
             this.wrapText(e.target.value);
         });
+
+        this.particleWidthInput.addEventListener("keyup", (e) => {
+            this.wrapText("Hello world");
+            if (!isNaN(e.target.value)) {
+                this.particleWidth = parseInt(e.target.value);
+            }
+        });
+
+        this.particleSpacingInput.addEventListener("keyup", (e) => {
+            this.wrapText("Hello world");
+            if (!isNaN(e.target.value)) {
+                this.particleSpacing = parseInt(e.target.value);
+            }
+        });
+
+        this.distanceRadiusInput.addEventListener("keyup", (e) => {
+            this.wrapText("Hello world");
+            if (!isNaN(parseInt(e.target.value))) {
+                this.distanceRadius = parseInt(e.target.value);
+            }
+        });
+
+        this.frictionInput.addEventListener("keyup", (e) => {
+            this.wrapText("Hello world");
+            if (!isNaN(e.target.value)) {
+                this.friction = parseFloat(e.target.value);
+            }
+        });
+
+        this.easeInput.addEventListener("keyup", (e) => {
+            this.wrapText("Hello world");
+            if (!isNaN(e.target.value)) {
+                this.ease = parseFloat(e.target.value);
+            }
+        });
+
+        this.wrapText("Hello world");
     }
 
     animate() {
@@ -137,9 +185,8 @@ class TextParticleAnimation {
 
         for (const particle of this.particles) {
             this.ctx.fillStyle = particle.color;
-            this.ctx.fillRect(particle.x, particle.y, this.rectSize, this.rectSize);
+            this.ctx.fillRect(particle.x, particle.y, this.particleWidth, this.particleWidth);
         }
     }
 }
-
-const textParticleAnimation = new TextParticleAnimation("canvas", "text-input");
+const textParticleAnimation = new TextParticleAnimation("canvas", "text-input", "ease", "friction", "particleSpacing", "particleWidth", "distanceRadius");
