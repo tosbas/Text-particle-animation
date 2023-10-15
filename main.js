@@ -140,39 +140,44 @@ class TextParticleAnimation {
             this.wrapText(e.target.value);
         });
 
-        this.particleWidthInput.addEventListener("keyup", (e) => {
-            this.wrapText("Hello world");
+        this.particleWidthInput.addEventListener("input", (e) => {
+
             if (!isNaN(e.target.value)) {
                 this.particleWidth = parseInt(e.target.value);
             }
+            this.wrapText("Hello world");
         });
 
-        this.particleSpacingInput.addEventListener("keyup", (e) => {
-            this.wrapText("Hello world");
+        this.particleSpacingInput.addEventListener("input", (e) => {
+
             if (!isNaN(e.target.value)) {
                 this.particleSpacing = parseInt(e.target.value);
             }
+            this.wrapText("Hello world");
         });
 
-        this.distanceRadiusInput.addEventListener("keyup", (e) => {
-            this.wrapText("Hello world");
+        this.distanceRadiusInput.addEventListener("input", (e) => {
+
             if (!isNaN(parseInt(e.target.value))) {
                 this.distanceRadius = parseInt(e.target.value);
             }
+            this.wrapText("Hello world");
         });
 
-        this.frictionInput.addEventListener("keyup", (e) => {
-            this.wrapText("Hello world");
+        this.frictionInput.addEventListener("input", (e) => {
+
             if (!isNaN(e.target.value)) {
                 this.friction = parseFloat(e.target.value);
             }
+            this.wrapText("Hello world");
         });
 
-        this.easeInput.addEventListener("keyup", (e) => {
-            this.wrapText("Hello world");
+        this.easeInput.addEventListener("input", (e) => {
+
             if (!isNaN(e.target.value)) {
                 this.ease = parseFloat(e.target.value);
             }
+            this.wrapText("Hello world");
         });
 
         this.wrapText("Hello world");
